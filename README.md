@@ -11,17 +11,28 @@
 
 <img src="./src/assets/things-web-logo.svg" alt="Things Web Logo" width="220" />
 
+Preview Links:
+- [things_web screenshot](./src/assets/web-preview.png)
+- [admin screenshot](./src/assets/admin-preview.png)
+- [chat_app screenshot](./src/assets/chat-app-preview.png)
+
 ### things_web
 
-<img src="./src/assets/web-preview.png" alt="things_web screenshot" width="960" />
+<a href="./src/assets/web-preview.png">
+  <img src="./src/assets/web-preview.png" alt="things_web screenshot" width="960" />
+</a>
 
 ### admin
 
-<img src="./src/assets/admin-preview.png" alt="admin screenshot" width="960" />
+<a href="./src/assets/admin-preview.png">
+  <img src="./src/assets/admin-preview.png" alt="admin screenshot" width="960" />
+</a>
 
 ### chat_app
 
-<img src="./src/assets/chat-app-preview.png" alt="chat_app screenshot" width="960" />
+<a href="./src/assets/chat-app-preview.png">
+  <img src="./src/assets/chat-app-preview.png" alt="chat_app screenshot" width="960" />
+</a>
 
 ## Project Overview
 
