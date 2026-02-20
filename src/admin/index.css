@@ -1,0 +1,59 @@
+@import "../../src/styles/globals.css";
+
+.admin-app {
+  font-size: 15px;
+  line-height: 1.55;
+}
+
+@media (min-width: 1024px) {
+  .admin-app {
+    font-size: 16px;
+  }
+}
+
+.admin-app .text-xs {
+  font-size: 0.8rem;
+  line-height: 1.2rem;
+}
+
+.admin-app .text-sm {
+  font-size: 0.93rem;
+  line-height: 1.4rem;
+}
+
+.admin-app .text-base {
+  font-size: 1rem;
+  line-height: 1.5rem;
+}
+
+.admin-app .text-lg {
+  font-size: 1.12rem;
+  line-height: 1.65rem;
+}
+
+.admin-app .text-2xl {
+  font-size: clamp(1.45rem, 2vw, 1.7rem);
+  line-height: 1.25;
+}
+
+.admin-app .text-3xl {
+  font-size: clamp(1.8rem, 2.6vw, 2.2rem);
+  line-height: 1.2;
+}
+
+.admin-app [class*="text-[10px]"] {
+  font-size: 0.75rem;
+  line-height: 1.1rem;
+}
+
+.admin-app [class*="text-[11px]"] {
+  font-size: 0.8rem;
+  line-height: 1.15rem;
+}
+
+.admin-app input,
+.admin-app textarea,
+.admin-app select,
+.admin-app button {
+  font-size: 0.95rem;
+}

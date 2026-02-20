@@ -1,0 +1,243 @@
+@import "../../src/styles/globals.css";
+
+.things-web-app {
+  --font-editorial: "Playfair Display", ui-serif, Georgia, serif;
+  --font-body: "Crimson Pro", "Playfair Display", ui-serif, Georgia, serif;
+  --brand: #d6aa63;
+  --brand-ink: #1e1507;
+  --brand-soft: #f0d6a8;
+  --brand-strong: #9b6f2d;
+  --background: #f2ecdf;
+  --foreground: #1f2734;
+  --card: #fff8ee;
+  --card-foreground: #1f2734;
+  --popover: #fffaf2;
+  --popover-foreground: #1f2734;
+  --primary: var(--brand);
+  --primary-foreground: var(--brand-ink);
+  --secondary: #ece3d0;
+  --secondary-foreground: #262f3d;
+  --muted: #eee4d4;
+  --muted-foreground: #596375;
+  --accent: #e8decb;
+  --accent-foreground: #1f2835;
+  --border: rgba(105, 74, 30, 0.24);
+  --input: rgba(105, 74, 30, 0.28);
+  --ring: rgba(185, 134, 48, 0.52);
+  --destructive: #cf4c42;
+  --shadow-ambient: 0 24px 56px -34px rgba(32, 24, 14, 0.46);
+  --shadow-floating:
+    0 34px 90px -42px rgba(26, 20, 12, 0.4),
+    0 1px 0 rgba(255, 255, 255, 0.34) inset;
+  color-scheme: light;
+}
+
+.dark .things-web-app {
+  --brand: #e0bd7f;
+  --brand-ink: #140d03;
+  --brand-soft: #9b7231;
+  --brand-strong: #f4d7a6;
+  --background: #080f1a;
+  --foreground: #edf1f9;
+  --card: #101a29;
+  --card-foreground: #eceff7;
+  --popover: #111d2d;
+  --popover-foreground: #eceff7;
+  --primary: var(--brand);
+  --primary-foreground: var(--brand-ink);
+  --secondary: #142032;
+  --secondary-foreground: #e9ecf5;
+  --muted: #121d2e;
+  --muted-foreground: #a8b5c9;
+  --accent: #182538;
+  --accent-foreground: #edf0f8;
+  --border: rgba(228, 196, 130, 0.24);
+  --input: rgba(228, 196, 130, 0.3);
+  --ring: rgba(233, 195, 120, 0.6);
+  --destructive: #dc5e53;
+  --shadow-ambient: 0 28px 62px -38px rgba(0, 0, 0, 0.75);
+  --shadow-floating:
+    0 38px 96px -40px rgba(0, 0, 0, 0.76),
+    0 1px 0 rgba(255, 255, 255, 0.1) inset;
+  color-scheme: dark;
+}
+
+.things-web-app {
+  color: var(--foreground);
+  font-family: var(--font-body);
+  font-size: clamp(15.5px, 0.92rem + 0.22vw, 17px);
+  line-height: 1.68;
+  letter-spacing: 0.008em;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+.things-web-app ::selection {
+  background: color-mix(in oklab, var(--brand) 45%, transparent);
+  color: var(--brand-ink);
+}
+
+.things-web-app :where(h1, h2, h3, h4, h5, h6) {
+  font-family: var(--font-editorial);
+  color: color-mix(in oklab, var(--foreground) 96%, black 4%);
+  letter-spacing: -0.02em;
+  text-wrap: balance;
+}
+
+.things-web-app h1 {
+  font-size: clamp(2.05rem, 1.4rem + 2.2vw, 4.25rem);
+  line-height: 1.05;
+}
+
+.things-web-app h2 {
+  font-size: clamp(1.55rem, 1.2rem + 1.35vw, 2.7rem);
+  line-height: 1.1;
+}
+
+.things-web-app h3 {
+  font-size: clamp(1.18rem, 1.05rem + 0.62vw, 1.55rem);
+  line-height: 1.2;
+}
+
+.things-web-app :where(p, li, dd) {
+  color: color-mix(in oklab, var(--foreground) 86%, var(--muted-foreground));
+}
+
+.things-web-app :where(a) {
+  transition:
+    color 160ms ease,
+    opacity 160ms ease,
+    border-color 160ms ease;
+}
+
+.things-web-app :where(button, input, textarea, select) {
+  font-family: var(--font-body);
+  letter-spacing: 0.004em;
+}
+
+.things-web-shell {
+  position: relative;
+  isolation: isolate;
+  overflow-x: clip;
+}
+
+.things-web-shell::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  background:
+    radial-gradient(
+      980px 500px at 7% -12%,
+      rgba(214, 170, 99, 0.3),
+      transparent 70%
+    ),
+    radial-gradient(
+      1080px 560px at 94% -18%,
+      rgba(88, 128, 186, 0.24),
+      transparent 72%
+    ),
+    linear-gradient(
+      180deg,
+      color-mix(in oklab, var(--background) 93%, black 7%),
+      var(--background)
+    );
+}
+
+.dark .things-web-shell::before {
+  background:
+    radial-gradient(
+      960px 520px at 8% -8%,
+      rgba(224, 189, 127, 0.24),
+      transparent 72%
+    ),
+    radial-gradient(
+      980px 560px at 88% -15%,
+      rgba(74, 142, 196, 0.25),
+      transparent 72%
+    ),
+    linear-gradient(180deg, #080f1a, #0d1725 45%, #09111d);
+}
+
+.things-web-shell::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  opacity: 0.08;
+  background-image: linear-gradient(
+    180deg,
+    transparent 0,
+    transparent calc(100% - 1px),
+    rgba(20, 26, 36, 0.18) calc(100% - 1px)
+  );
+  background-size: 100% 30px;
+  pointer-events: none;
+}
+
+.dark .things-web-shell::after {
+  opacity: 0.1;
+  background-image: linear-gradient(
+    180deg,
+    transparent 0,
+    transparent calc(100% - 1px),
+    rgba(245, 236, 217, 0.15) calc(100% - 1px)
+  );
+}
+
+.premium-panel {
+  border: 1px solid var(--border);
+  background: linear-gradient(
+    155deg,
+    color-mix(in oklab, var(--card) 94%, white 6%),
+    color-mix(in oklab, var(--card) 84%, var(--background))
+  );
+  backdrop-filter: blur(16px);
+  box-shadow: var(--shadow-floating);
+}
+
+.dark .premium-panel {
+  box-shadow: var(--shadow-floating);
+}
+
+.premium-muted {
+  color: color-mix(in oklab, var(--muted-foreground) 90%, var(--foreground));
+}
+
+.premium-scroll {
+  scrollbar-width: thin;
+  scrollbar-color: color-mix(in oklab, var(--foreground) 28%, transparent)
+    transparent;
+}
+
+.premium-scroll::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+.premium-scroll::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.premium-scroll::-webkit-scrollbar-thumb {
+  border-radius: 9999px;
+  border: 3px solid transparent;
+  background-color: color-mix(in oklab, var(--foreground) 32%, transparent);
+  background-clip: padding-box;
+}
+
+.premium-scroll-x {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.premium-scroll-x::-webkit-scrollbar {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .things-web-app {
+    font-size: 15.5px;
+    line-height: 1.62;
+  }
+}

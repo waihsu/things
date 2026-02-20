@@ -1,0 +1,1 @@
+ALTER TABLE "series" ADD COLUMN "read_count" integer DEFAULT 0 NOT NULL;

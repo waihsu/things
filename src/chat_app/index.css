@@ -1,0 +1,68 @@
+@import "../../src/styles/globals.css";
+
+.chat-app {
+  --chat-border-light: rgba(26, 31, 38, 0.12);
+  --chat-border-dark: rgba(255, 255, 255, 0.12);
+  --chat-surface-light: rgba(255, 255, 255, 0.7);
+  --chat-surface-dark: rgba(255, 255, 255, 0.04);
+}
+
+.chat-main {
+  min-height: 0;
+}
+
+.chat-app .chat-surface {
+  border: 1px solid var(--chat-border-light);
+  background: var(--chat-surface-light);
+  backdrop-filter: blur(12px);
+}
+
+.dark .chat-app .chat-surface {
+  border-color: var(--chat-border-dark);
+  background: var(--chat-surface-dark);
+}
+
+.chat-scroll {
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
+  scrollbar-color: transparent transparent;
+  scrollbar-gutter: stable;
+}
+
+.chat-scroll::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+.chat-scroll::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.chat-scroll::-webkit-scrollbar-thumb {
+  border: 3px solid transparent;
+  border-radius: 9999px;
+  background: transparent;
+  background-clip: padding-box;
+}
+
+.chat-scroll:hover {
+  scrollbar-color: rgba(90, 90, 90, 0.35) transparent;
+}
+
+.chat-scroll:hover::-webkit-scrollbar-thumb {
+  background-color: rgba(90, 90, 90, 0.35);
+}
+
+.dark .chat-scroll:hover {
+  scrollbar-color: rgba(235, 235, 235, 0.28) transparent;
+}
+
+.dark .chat-scroll:hover::-webkit-scrollbar-thumb {
+  background-color: rgba(235, 235, 235, 0.28);
+}
+
+@media (max-width: 767px) {
+  .chat-main {
+    padding-bottom: max(92px, calc(env(safe-area-inset-bottom) + 82px));
+  }
+}

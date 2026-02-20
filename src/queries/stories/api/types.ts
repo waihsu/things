@@ -1,0 +1,31 @@
+export type Story = {
+  id: string;
+  title: string;
+  summary: string | null;
+  content: string;
+  user_id: string;
+  read_count: number;
+  created_at: string;
+  updated_at: string;
+  category_ids: string[];
+  category_names: string[];
+  author_name: string | null;
+  author_avatar: string | null;
+  author_username: string | null;
+  author_bio?: string | null;
+  author_urls?: string | null;
+  like_count: number;
+  comment_count: number;
+  liked_by_me: boolean;
+  is_banned: boolean;
+  banned_at?: string | null;
+  banned_reason?: string | null;
+  author?: {
+    id: string;
+    name: string | null;
+    avatar: string | null;
+    username?: string | null;
+    bio?: string | null;
+    urls?: string | null;
+  };
+};

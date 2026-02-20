@@ -1,0 +1,16 @@
+export const APP_ROUTES = [
+  { path: "/", label: "Home" },
+  { path: "/stories", label: "Stories" },
+  { path: "/poems", label: "Poems" },
+  { path: "/series", label: "Series" },
+  { path: "/chat", label: "Chat" },
+  { path: "/create-story", label: "Write Story" },
+  { path: "/create-poem", label: "Write Poem" },
+  { path: "/categories", label: "Categories" },
+  { path: "/profile", label: "Profile" },
+  { path: "/notifications", label: "Notifications" },
+  { path: "/about", label: "About" },
+  { path: "/login", label: "Login" },
+  { path: "/register", label: "Sign Up" },
+  { path: "/settings", label: "Settings" },
+];

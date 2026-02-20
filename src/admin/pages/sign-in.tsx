@@ -1,0 +1,172 @@
+"use client";
+
+import { Button } from "@/src/admin/components/ui/button";
+import { Checkbox } from "@/src/admin/components/ui/checkbox";
+import { Input } from "@/src/admin/components/ui/input";
+import { Label } from "@/src/admin/components/ui/label";
+import { motion, useReducedMotion } from "framer-motion";
+import { Chrome, Github, Twitter } from "lucide-react";
+import type { FormEvent } from "react";
+import { useState } from "react";
+import { authClient } from "../lib/auth";
+import { toast } from "sonner";
+
+const socialProviders = [
+  { name: "Google", icon: Chrome },
+  { name: "Twitter", icon: Twitter },
+  { name: "GitHub", icon: Github },
+];
+
+export function SignInPage() {
+  const shouldReduceMotion = useReducedMotion();
+  const [error, setError] = useState<string | null>(null);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const callbackURL =
+    typeof window !== "undefined" ? `${window.location.origin}/` : "/";
+
+  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    setError(null);
+    setIsSubmitting(true);
+
+    const formData = new FormData(event.currentTarget);
+    const email = String(formData.get("email") || "");
+    const password = String(formData.get("password") || "");
+    const rememberMe = Boolean(formData.get("remember-me"));
+
+    try {
+      await authClient.signIn.email({
+        email,
+        password,
+        rememberMe,
+        callbackURL,
+      });
+    } catch (err) {
+      setError("Invalid email or password.");
+      toast.error(
+        "Sign in failed. Please check your credentials and try again.",
+      );
+      console.error({ err });
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: shouldReduceMotion ? 0 : 16 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{
+        duration: 0.45,
+        ease: shouldReduceMotion ? "linear" : [0.16, 1, 0.3, 1],
+      }}
+      className="group w-full rounded-3xl overflow-hidden border border-border/60 bg-card/85 p-8 backdrop-blur-xl sm:p-10 relative"
+      role="form"
+      aria-labelledby="glass-sign-in-title"
+    >
+      <div
+        aria-hidden="true"
+        className="absolute inset-0 bg-gradient-to-br from-foreground/[0.04] via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100 -z-10"
+      />
+      <div className="mb-8 space-y-2 text-center">
+        <div className="mx-auto inline-flex items-center gap-2 rounded-full border border-border/60 bg-foreground/5 px-3 py-1 text-xs uppercase tracking-[0.28em] text-muted-foreground">
+          Sign In
+        </div>
+        <h1
+          id="glass-sign-in-title"
+          className="text-2xl font-semibold text-foreground sm:text-3xl"
+        >
+          Access your workspace
+        </h1>
+        <p className="text-sm text-muted-foreground">
+          Choose a social account or continue with email and password.
+        </p>
+      </div>
+
+      <div className="mb-8 grid gap-3 sm:grid-cols-3">
+        {socialProviders.map((provider) => (
+          <Button
+            onClick={() =>
+              authClient.signIn.social({
+                provider: provider.name.toLowerCase(),
+                callbackURL,
+              })
+            }
+            key={provider.name}
+            variant="outline"
+            className="flex items-center justify-center gap-2 rounded-full border-border/60 bg-card/70 text-sm text-foreground transition-transform duration-300 hover:-translate-y-1 hover:text-brand-strong hover:border-brand/50"
+            aria-label={`Continue with ${provider.name}`}
+          >
+            <provider.icon className="h-4 w-4" aria-hidden />
+            <span className="hidden sm:inline">{provider.name}</span>
+          </Button>
+        ))}
+      </div>
+
+      <div className="mb-6 flex items-center gap-3">
+        <div className="h-px flex-1 bg-border/70" />
+        <span className="text-xs uppercase tracking-[0.34em] text-muted-foreground">
+          or
+        </span>
+        <div className="h-px flex-1 bg-border/70" />
+      </div>
+
+      <form className="space-y-6" onSubmit={handleSubmit}>
+        <div className="space-y-2">
+          <Label htmlFor="email">Email address</Label>
+          <Input
+            id="email"
+            name="email"
+            type="email"
+            placeholder="you@example.com"
+            autoComplete="email"
+            required
+            className="h-11 rounded-2xl border-border/60 bg-background/60 px-4"
+          />
+        </div>
+
+        <div className="space-y-2">
+          <Label htmlFor="password">Password</Label>
+          <Input
+            id="password"
+            name="password"
+            type="password"
+            placeholder="Enter your password"
+            autoComplete="current-password"
+            required
+            className="h-11 rounded-2xl border-border/60 bg-background/60 px-4"
+          />
+        </div>
+
+        <div className="flex items-center justify-between text-sm text-muted-foreground">
+          <label className="flex items-center gap-2">
+            <Checkbox id="remember-me" name="remember-me" />
+            <span>Remember me</span>
+          </label>
+          <button
+            type="button"
+            className="text-xs font-medium text-brand-strong underline-offset-4 hover:underline"
+          >
+            Forgot password?
+          </button>
+        </div>
+
+        {error && (
+          <p className="text-xs text-destructive text-center">{error}</p>
+        )}
+
+        <Button
+          type="submit"
+          disabled={isSubmitting}
+          className="w-full rounded-full bg-brand px-6 py-3 text-brand-ink shadow-[0_20px_60px_-30px_rgba(243,213,149,0.7)] transition-transform duration-300 hover:-translate-y-1 hover:bg-brand-soft"
+        >
+          {isSubmitting ? "Signing in..." : "Sign In"}
+        </Button>
+      </form>
+
+      <p className="mt-6 text-center text-xs text-muted-foreground">
+        By continuing you agree to our terms of service and privacy policy.
+      </p>
+    </motion.div>
+  );
+}
