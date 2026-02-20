@@ -21,6 +21,7 @@ import {
 import { LogOut, Menu } from "lucide-react";
 import { useAuthStore } from "@/src/store/use-auth-store";
 import { Link, useLocation } from "react-router";
+import thingsWebLogo from "@/src/assets/things-web-logo.svg";
 
 import { APP_ROUTES } from "@/src/constants/routes";
 import { ModeToggle } from "./mode-toggle";
@@ -48,9 +49,12 @@ export default function Navbar() {
         <Link to="/" className="group flex items-center gap-3">
           <span className="relative flex h-9 w-9 items-center justify-center rounded-2xl border border-border/80 bg-card/85 shadow-[0_12px_26px_rgba(12,18,30,0.22)]">
             <span className="absolute inset-0 rounded-2xl bg-[radial-gradient(circle_at_30%_30%,rgba(243,213,149,0.45),transparent_55%)]" />
-            <span className="relative z-10 text-sm font-bold text-brand">
-              T
-            </span>
+            <img
+              src={thingsWebLogo}
+              alt="Things Web logo"
+              className="relative z-10 h-7 w-7 rounded-xl"
+              loading="eager"
+            />
           </span>
           <div>
             <p className="text-sm font-semibold tracking-wide text-foreground transition-colors group-hover:text-brand">
